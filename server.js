@@ -2,6 +2,7 @@ const dotenv = require('dotenv')
 const express = require('express')
 const mongoose = require('mongoose')
 const testJWTRouter = require('./controllers/test-jwt')
+const cors = require('cors')
 
 dotenv.config()
 const app = express()
