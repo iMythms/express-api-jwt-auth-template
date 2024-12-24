@@ -1,6 +1,7 @@
 const dotenv = require('dotenv')
 const express = require('express')
 const mongoose = require('mongoose')
+const testJWTRouter = require('./controllers/test-jwt')
 
 dotenv.config()
 const app = express()
@@ -13,6 +14,7 @@ mongoose.connection.on('connected', () => {
 app.use(express.json())
 
 // Routes go here
+app.use('/test-jwt', testJWTRouter)
 
 app.listen(PORT, () => {
 	console.log(`Running on http://localhost:${PORT}`)
