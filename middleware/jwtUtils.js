@@ -12,7 +12,7 @@ const signToken = (user) => {
 
 const verifyToken = (req, res, next) => {
 	try {
-		const token = req.headers.Authorization.split('Bearer ')[1]
+		const token = req.headers.authorization.split('Bearer ')[1]
 		const decoded = jwt.verify(token, process.env.JWT_SECRET)
 		req.user = decoded
 		next()

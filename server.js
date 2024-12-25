@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const authRouter = require('./controllers/auth')
 const userRouter = require('./controllers/user')
 const cors = require('cors')
+const { verifyToken } = require('./middleware/jwtUtils')
 
 dotenv.config()
 const app = express()
@@ -18,7 +19,7 @@ app.use(cors())
 
 // Routes go here
 app.use('/auth', authRouter)
-app.use('/user', userRouter)
+app.use('/user', verifyToken, userRouter)
 
 app.listen(PORT, () => {
 	console.log(`Running on http://localhost:${PORT}`)
